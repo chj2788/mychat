@@ -9,7 +9,6 @@ const useStyles = makeStyles({
   root: {
     fontFamily: "Lora",
     backgroundColor: "#212121",
-    backgroundSize: "cover",
   },
 });
 

@@ -1,8 +1,7 @@
-import { Button, makeStyles } from "@material-ui/core";
-import React from "react";
+import { Button, Grid, makeStyles } from "@material-ui/core";
 import firebase from "firebase/app";
 import { auth, database } from "../misc/firebase";
-import { Alert } from "@material-ui/lab";
+// import { Alert } from "@material-ui/lab";
 
 const useStyles = makeStyles({
   loginButtonFB: {
@@ -11,8 +10,9 @@ const useStyles = makeStyles({
       backgroundColor: "#8b9dc3",
     },
     color: "#ffffff",
-    borderRadius: 10,
-    width: 400,
+    borderRadius: "5px",
+    padding: "1% 20%",
+    margin: "1em auto",
   },
   loginButtonGG: {
     backgroundColor: "#db4437",
@@ -20,24 +20,22 @@ const useStyles = makeStyles({
       backgroundColor: "#ff7762",
     },
     color: "#ffffff",
-    borderRadius: 10,
-    width: 400,
-  },
-  buttons: {
-    margin: "4% auto",
+    borderRadius: "5px",
+    padding: "1% 20%",
+    margin: "1em auto",
   },
 });
 
 const SignInButtons = () => {
   const classes = useStyles();
 
-  function logInAlert(message) {
-    return (
-      <div>
-        <Alert severity="success">{message}</Alert>
-      </div>
-    );
-  }
+  // function logInAlert(message) {
+  //   return (
+  //     <div>
+  //       <Alert severity="success">{message}</Alert>
+  //     </div>
+  //   );
+  // }
 
   const signInWithProvider = async (provider) => {
     try {
@@ -70,26 +68,22 @@ const SignInButtons = () => {
 
   return (
     <>
-      <div className={classes.buttons}>
+      <Grid container direction="column">
         <Button
           className={classes.loginButtonFB}
-          component="block"
           variant="contained"
           onClick={onFBSignIn}
         >
           Continue with Facebook
         </Button>
-      </div>
-      <div className={classes.buttons}>
         <Button
           className={classes.loginButtonGG}
-          component="block"
           variant="contained"
           onClick={onGGSignIn}
         >
           Continue with Google
         </Button>
-      </div>
+      </Grid>
     </>
   );
 };
