@@ -1,15 +1,6 @@
-import { AppBar, Container, makeStyles, Toolbar } from "@material-ui/core";
-import SignInButtons from "./SignInButtons";
+import { AppBar, makeStyles, Toolbar } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    textAlign: "center",
-    height: "100vh",
-    fontFamily: "Lora",
-  },
   appbar: {
     background: "none",
     fontFamily: "Galada",
@@ -24,23 +15,12 @@ const useStyles = makeStyles((theme) => ({
   colorText: {
     color: "#42a5f4",
   },
-  container: {
-    textAlign: "center",
-  },
-  title: {
-    fontSize: "3em",
-    color: "#ffffff",
-  },
-  text: {
-    color: "#757575",
-    margin: "5% auto",
-  },
 }));
 
 export default function Header() {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <>
       <AppBar className={classes.appbar}>
         <Toolbar className={classes.appbarWrapper}>
           <h1 className={classes.appbarTitle}>
@@ -48,14 +28,6 @@ export default function Header() {
           </h1>
         </Toolbar>
       </AppBar>
-      <Container className={classes.container}>
-        <h1 className={classes.title}>
-          Welcome to <br />
-          MyChat
-        </h1>
-        <p className={classes.text}>Please log in using user credentials</p>
-        <SignInButtons />
-      </Container>
-    </div>
+    </>
   );
 }

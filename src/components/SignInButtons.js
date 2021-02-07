@@ -1,6 +1,8 @@
-import { Button, Grid, makeStyles } from "@material-ui/core";
+import { Button, Grid, makeStyles, Container } from "@material-ui/core";
 import firebase from "firebase/app";
 import { auth, database } from "../misc/firebase";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import GTranslateIcon from "@material-ui/icons/GTranslate";
 // import { Alert } from "@material-ui/lab";
 
 const useStyles = makeStyles({
@@ -23,6 +25,17 @@ const useStyles = makeStyles({
     borderRadius: "5px",
     padding: "1% 20%",
     margin: "1em auto",
+  },
+  container: {
+    textAlign: "center",
+  },
+  title: {
+    fontSize: "3em",
+    color: "#ffffff",
+  },
+  text: {
+    color: "#757575",
+    margin: "5% auto",
   },
 });
 
@@ -68,22 +81,29 @@ const SignInButtons = () => {
 
   return (
     <>
-      <Grid container direction="column">
-        <Button
-          className={classes.loginButtonFB}
-          variant="contained"
-          onClick={onFBSignIn}
-        >
-          Continue with Facebook
-        </Button>
-        <Button
-          className={classes.loginButtonGG}
-          variant="contained"
-          onClick={onGGSignIn}
-        >
-          Continue with Google
-        </Button>
-      </Grid>
+      <Container className={classes.container}>
+        <h1 className={classes.title}>
+          Welcome to <br />
+          MyChat
+        </h1>
+        <p className={classes.text}>Please log in using user credentials</p>
+        <Grid container direction="column">
+          <Button
+            className={classes.loginButtonFB}
+            variant="contained"
+            onClick={onFBSignIn}
+          >
+            <FacebookIcon /> Continue with Facebook
+          </Button>
+          <Button
+            className={classes.loginButtonGG}
+            variant="contained"
+            onClick={onGGSignIn}
+          >
+            <GTranslateIcon /> Continue with Google
+          </Button>
+        </Grid>
+      </Container>
     </>
   );
 };

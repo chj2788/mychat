@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
 import Header from "../components/Header";
+import SignInButtons from "../components/SignInButtons";
 
 // import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome;";
@@ -10,6 +11,13 @@ const useStyles = makeStyles({
     fontFamily: "Lora",
     backgroundColor: "#212121",
   },
+  header: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    height: "100vh",
+  },
 });
 
 const SignIn = () => {
@@ -17,7 +25,10 @@ const SignIn = () => {
 
   return (
     <div className={classes.root}>
-      <Header />
+      <div className={classes.header}>
+        <Header />
+        <SignInButtons />
+      </div>
     </div>
   );
 };
