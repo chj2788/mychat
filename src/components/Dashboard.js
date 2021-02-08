@@ -2,6 +2,7 @@ import { Button, Divider, makeStyles } from "@material-ui/core";
 import React from "react";
 import { useProfile } from "../context/profile.context";
 import { database } from "../misc/firebase";
+import AvatarUpload from "./AvatarUpload";
 import EditableInput from "./EditableInput";
 import ProviderBlock from "./ProviderBlock";
 
@@ -52,6 +53,7 @@ const Dashboard = ({ onSignOut }) => {
           onSave={onSave}
           label={"Nickname"}
         />
+        <AvatarUpload />
       </div>
       <Button
         variant="contained"
