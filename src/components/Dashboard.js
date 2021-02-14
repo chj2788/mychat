@@ -30,7 +30,6 @@ const Dashboard = ({ onSignOut }) => {
   const { profile } = useProfile();
   const onSave = async (newData) => {
     const NicknameRef = database.ref(`/profiles/${profile.uid}`).child("name");
-
     try {
       await NicknameRef.set(newData);
       alert("Nickname has been updated");

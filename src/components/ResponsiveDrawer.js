@@ -14,6 +14,7 @@ import { Button, Grid, Modal } from "@material-ui/core";
 import { useModalState } from "../misc/custom-hooks";
 import Dashboard from "./Dashboard";
 import { auth } from "../misc/firebase";
+import CreateRoom from "./CreateRoom";
 const drawerWidth = "35%";
 
 const useStyles = makeStyles((theme) => ({
@@ -65,7 +66,7 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   };
 
-  const { isOpen, close, open } = useModalState();
+  const { isOpen, open, close } = useModalState();
 
   const onSignOut = useCallback(() => {
     auth.signOut();
@@ -85,7 +86,7 @@ function ResponsiveDrawer(props) {
         <Modal open={isOpen} onClose={close} className={classes.modal}>
           <Dashboard onSignOut={onSignOut} />
         </Modal>
-        <Button color="secondary">Create a new chatroom</Button>
+        <CreateRoom />
       </Grid>
     </div>
   );
