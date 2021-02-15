@@ -4,10 +4,23 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+
+const theme = createMuiTheme({
+  palette: {
+    type: "dark",
+  },
+  typography: {
+    // Use the system font instead of the default Roboto font.
+    fontFamily: "Oxygen",
+  },
+});
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );

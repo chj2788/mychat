@@ -85,6 +85,8 @@ const CreateRoom = () => {
               required
               onChange={onNameChange}
               value={formName}
+              error={formName === "" ? true : false}
+              helperText="This field should not be empty"
             />
           </div>
           <div className={classes.grid}>
@@ -99,10 +101,21 @@ const CreateRoom = () => {
               required
               onChange={onDesChange}
               value={formDes}
+              error={formDes === "" ? true : false}
+              helperText="This field should not be empty"
             />
           </div>
           <div className={classes.button}>
-            <Button onClick={onSubmit} disabled={isLoading}>
+            <Button
+              onClick={onSubmit}
+              disabled={
+                formDes === ""
+                  ? true
+                  : false || formName === ""
+                  ? true
+                  : false || isLoading
+              }
+            >
               Create new chat room
             </Button>
           </div>

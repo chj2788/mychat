@@ -15,6 +15,8 @@ import { useModalState } from "../misc/custom-hooks";
 import Dashboard from "./Dashboard";
 import { auth } from "../misc/firebase";
 import CreateRoom from "./CreateRoom";
+import ChatRoomList from "./rooms/ChatRoomList";
+
 const drawerWidth = "35%";
 
 const useStyles = makeStyles((theme) => ({
@@ -54,6 +56,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
+  conversation: {
+    margin: "1em auto",
+  },
+  buttonGrid: {
+    margin: "1em auto",
+  },
 }));
 
 function ResponsiveDrawer(props) {
@@ -79,7 +87,13 @@ function ResponsiveDrawer(props) {
     <div>
       <div className={classes.toolbar} />
       <Divider />
-      <Grid container direction="column" justify="center" alignItems="center">
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+        className={classes.buttonGrid}
+      >
         <Button color="primary" onClick={open}>
           Dashboard
         </Button>
@@ -88,6 +102,11 @@ function ResponsiveDrawer(props) {
         </Modal>
         <CreateRoom />
       </Grid>
+      <Divider />
+      <Typography variant="h6" className={classes.conversation}>
+        CONVERSATIONS
+      </Typography>
+      <ChatRoomList />
     </div>
   );
 
