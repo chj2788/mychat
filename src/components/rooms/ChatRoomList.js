@@ -4,6 +4,7 @@ import {
   List,
   ListItem,
   makeStyles,
+  MenuItem,
 } from "@material-ui/core";
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
@@ -17,6 +18,11 @@ const useStyles = makeStyles((theme) => ({
   navlink: {
     display: "block",
     padding: 0,
+  },
+  button: {
+    display: "block",
+    color: "white",
+    padding: "1em",
   },
 }));
 
@@ -39,10 +45,16 @@ const ChatRoomList = () => {
           <ListItem
             className={classes.navlink}
             component={NavLink}
-            to={`/chats/${room.id}`}
+            to={`/chat/${room.id}`}
             key={room.id}
           >
-            <RoomItems room={room} key={room.id} currentKey={room.id} />
+            <MenuItem
+              className={classes.button}
+              button
+              selected={`/chat/${room.id}` === location.pathname}
+            >
+              <RoomItems room={room} />
+            </MenuItem>
           </ListItem>
         ))}
     </List>

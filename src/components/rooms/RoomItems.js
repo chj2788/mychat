@@ -25,11 +25,7 @@ const useStyles = makeStyles((theme) => ({
   message: {
     alignItems: "center",
   },
-  button: {
-    display: "block",
-    color: "white",
-    padding: "1em",
-  },
+
   text: {
     fontSize: "1em",
   },
@@ -42,13 +38,11 @@ const RoomItems = ({ room, key, currentKey }) => {
 
   return (
     <div>
-      <MenuItem className={classes.button} button selected={key === currentKey}>
-        <div className={classes.content}>
-          <h3 className={classes.roomname}>{name}</h3>
-          <TimeAgo className={classes.time} datetime={new Date(createdAt)} />
-        </div>
-        <ListItemText className={classes.text}>No messages yet...</ListItemText>
-      </MenuItem>
+      <div className={classes.content}>
+        <h3 className={classes.roomname}>{name}</h3>
+        <TimeAgo className={classes.time} datetime={new Date(createdAt)} />
+      </div>
+      <ListItemText className={classes.text}>No messages yet...</ListItemText>
     </div>
   );
 };
