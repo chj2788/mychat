@@ -4,9 +4,8 @@ import { getNameInitials } from "../misc/helpers";
 
 const useStyles = makeStyles((theme) => ({
   profileAvatar: {
-    width: theme.spacing(12),
-    height: theme.spacing(12),
-    fontSize: "2em",
+    width: theme.spacing(30),
+    height: theme.spacing(30),
   },
 }));
 

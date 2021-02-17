@@ -1,4 +1,4 @@
-import { Button, Divider, makeStyles } from "@material-ui/core";
+import { Badge, Button, Divider, makeStyles } from "@material-ui/core";
 import React from "react";
 import { useProfile } from "../context/profile.context";
 import { database } from "../misc/firebase";
@@ -18,10 +18,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   input: {
-    width: "40ch",
+    margin: "1em auto",
   },
   setMargin: {
-    margin: "1em auto",
+    margin: "1.5em auto 1em",
   },
 }));
 
@@ -42,26 +42,23 @@ const Dashboard = ({ onSignOut }) => {
     <div className={classes.paper}>
       <h5>Dashboard</h5>
       <div>
-        <p>Hey, {profile.name}</p>
-        <ProviderBlock />
-        <Divider className={classes.setMargin} />
-        <EditableInput
-          className={classes.input}
-          name="nickname"
-          initialValue={profile.name}
-          onSave={onSave}
-          label={"Nickname"}
-        />
         <AvatarUpload />
+        <div className={classes.input}>
+          <EditableInput
+            name="nickname"
+            initialValue={profile.name}
+            onSave={onSave}
+            label={"Nickname"}
+          />
+        </div>
+        <Divider className={classes.setMargin} />
       </div>
-      <Button
-        variant="contained"
-        className={classes.setMargin}
-        color="secondary"
-        onClick={onSignOut}
-      >
-        Sign out
-      </Button>
+      <ProviderBlock />
+      <div className={classes.setMargin}>
+        <Button variant="contained" color="secondary" onClick={onSignOut}>
+          Sign out
+        </Button>
+      </div>
     </div>
   );
 };
