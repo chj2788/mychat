@@ -9,7 +9,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import clsx from "clsx";
-import { Button, Grid, Modal } from "@material-ui/core";
+import { Button, Card, Grid, Modal } from "@material-ui/core";
 import { useModalState } from "../misc/custom-hooks";
 import Dashboard from "./Dashboard";
 import { auth } from "../misc/firebase";
@@ -81,6 +81,8 @@ const useStyles = makeStyles((theme) => ({
   conversation: {
     margin: "1em auto",
     textAlign: "center",
+    justifyContent: "center",
+    display: "flex",
   },
   buttonGrid: {
     margin: "1em auto",
@@ -91,6 +93,16 @@ const useStyles = makeStyles((theme) => ({
   profile: {
     width: theme.spacing(25),
     height: theme.spacing(25),
+    margin: "0 auto 2em",
+    cursor: "pointer",
+    // opacity: 0.2,
+    "&:hover": {
+      // cursor: "pointer",
+      opacity: 0.2,
+    },
+  },
+  flexy: {
+    display: "flex",
   },
 }));
 
@@ -99,11 +111,20 @@ function ResponsiveDrawer() {
   const theme = useTheme();
   const [opening, setOpening] = useState(false);
   const { profile } = useProfile();
-
+  const [mouseovered, setMouseOvered] = useState(false);
   const handleDrawerOpen = () => {
     setOpening(true);
   };
-
+  const onMouseEnterViewBtn = (e) => {
+    e.preventDefault();
+    setMouseOvered(true);
+    console.log("Hi");
+  };
+  const onMouseLeaveViewBtn = (e) => {
+    e.preventDefault();
+    setMouseOvered(false);
+    console.log("I am leaving");
+  };
   const handleDrawerClose = () => {
     setOpening(false);
   };
@@ -129,23 +150,31 @@ function ResponsiveDrawer() {
         className={classes.buttonGrid}
       >
         <p className={classes.name}>Hey, {profile.name}</p>
+
         <AvatarProfile
           className={classes.profile}
           src={profile.avatar}
           name={profile.name}
+          onClick={open}
+          onMouseEnter={onMouseEnterViewBtn}
+          onMouseLeave={onMouseLeaveViewBtn}
+          mouseovered={mouseovered}
+          // onMouseLeave={onMouseLeaveBiewBtn}
         />
-        <Button color="primary" onClick={open}>
-          Dashboard
-        </Button>
+
         <Modal open={isOpen} onClose={close} className={classes.modal}>
           <Dashboard onSignOut={onSignOut} />
         </Modal>
-        <CreateRoom />
       </Grid>
       <Divider />
       <Typography variant="h6" className={classes.conversation}>
         CONVERSATIONS
       </Typography>
+      <CreateRoom className="classes.flexy" />
+      {/* <Typography variant="h6" className={classes.conversation}>
+        CONVERSATIONS
+      </Typography>
+      <CreateRoom className="classes.flexy" /> */}
       <ChatRoomList />
     </div>
   );
@@ -198,7 +227,6 @@ function ResponsiveDrawer() {
         })}
       >
         <div className={classes.drawerHeader} />
-        <Chat />
       </main>
     </div>
   );

@@ -1,8 +1,15 @@
-import { Button, makeStyles, Modal, TextField } from "@material-ui/core";
+import {
+  Button,
+  IconButton,
+  makeStyles,
+  Modal,
+  TextField,
+} from "@material-ui/core";
 import React, { useState } from "react";
 import { useModalState } from "../misc/custom-hooks";
 import firebase from "firebase/app";
 import { database } from "../misc/firebase";
+import AddIcon from "@material-ui/icons/Add";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -21,9 +28,10 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 4, 3),
   },
   button: {
-    display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    width: "100%",
+    borderRadius: 0,
   },
   grid: {
     margin: "0.7em auto",
@@ -69,9 +77,9 @@ const CreateRoom = () => {
 
   return (
     <div>
-      <Button color="primary" onClick={open}>
-        Create a new chatroom
-      </Button>
+      <IconButton className={classes.button} onClick={open}>
+        <AddIcon />
+      </IconButton>
       <Modal className={classes.modal} open={isOpen} onClose={close}>
         <div className={classes.paper}>
           <h5>New Chat Room</h5>
