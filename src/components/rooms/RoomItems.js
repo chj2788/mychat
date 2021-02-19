@@ -3,9 +3,11 @@ import {
   ListItemText,
   makeStyles,
   MenuItem,
+  Typography,
 } from "@material-ui/core";
 import React, { useState } from "react";
 import TimeAgo from "timeago-react";
+import AvatarProfile from "../AvatarProfile";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,20 +31,44 @@ const useStyles = makeStyles((theme) => ({
   text: {
     fontSize: "1em",
   },
+  name: {
+    fontStyle: "italic",
+  },
 }));
 
-const RoomItems = ({ room, key, currentKey }) => {
+const RoomItems = ({ room }) => {
   const classes = useStyles();
 
-  const { createdAt, name } = room;
+  const { createdAt, name, lastMessage } = room;
 
   return (
     <div>
       <div className={classes.content}>
         <h3 className={classes.roomname}>{name}</h3>
-        <TimeAgo className={classes.time} datetime={new Date(createdAt)} />
+        <TimeAgo
+          className={classes.time}
+          datetime={
+            lastMessage ? new Date(lastMessage.createdAt) : new Date(createdAt)
+          }
+        />
       </div>
-      <ListItemText className={classes.text}>No messages yet...</ListItemText>
+      {lastMessage ? (
+        <>
+          <div>
+            <AvatarProfile
+              src={lastMessage.author.avatar}
+              name={lastMessage.author.name}
+              className={classes.profile}
+            />
+          </div>
+          <Typography className={classes.name}>
+            {lastMessage.author.name}
+          </Typography>
+          <span>{lastMessage.text}</span>
+        </>
+      ) : (
+        <ListItemText className={classes.text}>No messages yet...</ListItemText>
+      )}
     </div>
   );
 };
