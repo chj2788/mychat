@@ -5,6 +5,7 @@ import AvatarEditor from "react-avatar-editor";
 import { useProfile } from "../context/profile.context";
 import { database, storage } from "../misc/firebase";
 import AvatarProfile from "./AvatarProfile";
+import { getUserUpdates } from "../misc/helpers";
 
 const useStyles = makeStyles((theme) => ({
   chip: {
@@ -108,11 +109,14 @@ const AvatarUpload = () => {
 
       const downloadURL = await uploadAvatar.ref.getDownloadURL();
 
-      const userAvatarRef = database
-        .ref(`/profiles/${profile.uid}`)
-        .child("avatar");
+      const updates = await getUserUpdates(
+        profile.uid,
+        "avatar",
+        downloadURL,
+        database
+      );
 
-      userAvatarRef.set(downloadURL);
+      await database.ref().update(updates);
 
       setIsLoading(false);
       alert("Your avatar has been successfully uploaded!");

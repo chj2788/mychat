@@ -5,6 +5,7 @@ import { database } from "../misc/firebase";
 import AvatarUpload from "./AvatarUpload";
 import EditableInput from "./EditableInput";
 import ProviderBlock from "./ProviderBlock";
+import { getUserUpdates } from "../misc/helpers";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -29,9 +30,16 @@ const Dashboard = ({ onSignOut }) => {
   const classes = useStyles();
   const { profile } = useProfile();
   const onSave = async (newData) => {
-    const NicknameRef = database.ref(`/profiles/${profile.uid}`).child("name");
     try {
-      await NicknameRef.set(newData);
+      const updates = await getUserUpdates(
+        profile.uid,
+        "name",
+        newData,
+        database
+      );
+
+      await database.ref().update(updates);
+
       alert("Nickname has been updated");
     } catch (err) {
       alert(err.message);
