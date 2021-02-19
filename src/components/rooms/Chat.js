@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
   },
   messages: {
-    width: "300px",
+    width: "100%",
     height: "600px",
     textAlign: "center",
   },
