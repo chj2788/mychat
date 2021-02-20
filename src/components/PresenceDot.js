@@ -60,7 +60,7 @@ const PresenceDot = ({ children, uid }) => {
   const presence = usePresence(uid);
   const color = getColor(presence);
   const GreenBadge = StyledBadge(color);
-  console.log(GreenBadge);
+  // console.log(GreenBadge);
 
   return (
     <>

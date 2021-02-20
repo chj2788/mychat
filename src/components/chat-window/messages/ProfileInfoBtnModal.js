@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProfileInfoBtnModal = ({ profile }) => {
+const ProfileInfoBtnModal = ({ profile, children }) => {
   const classes = useStyles();
   const { isOpen, close, open } = useModalState();
   const { name, avatar, createdAt } = profile;
@@ -55,6 +55,7 @@ const ProfileInfoBtnModal = ({ profile }) => {
           </div>
           <h5>{name}</h5>
           <p className={classes.since}>Member since {memberSince}</p>
+          <div className={classes.button}>{children}</div>
           <Button onClick={close}>close</Button>
         </div>
       </Modal>
