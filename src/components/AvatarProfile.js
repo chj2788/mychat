@@ -9,14 +9,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AvatarProfile = ({ name, mouseovered, ...avatarProps }) => {
+const AvatarProfile = ({ name, ...avatarProps }) => {
   const classes = useStyles();
-  // console.log(onMouseEnter);
-  console.log(mouseovered);
   return (
     <Avatar className={classes.profileAvatar} {...avatarProps}>
       {getNameInitials(name)}
-      {/* <p id="unorderedList">Hello</p> */}
     </Avatar>
   );
 };
