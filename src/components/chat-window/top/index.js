@@ -5,13 +5,12 @@ import RoomInfoBtnModal from "./RoomInfoBtnModal";
 
 const Top = () => {
   const name = useCurrentRoom((v) => v.name);
+  const isAdmin = useCurrentRoom((v) => v.isAdmin);
 
   return (
     <div>
       <h2>{name}</h2>
-      <span>
-        <EditRoomModal />
-      </span>
+      <span>{isAdmin && <EditRoomModal />}</span>
       <RoomInfoBtnModal />
     </div>
   );

@@ -82,7 +82,7 @@ const EditRoomModal = () => {
             label="Description"
             labelwidth={88}
           />
-          <Button onclick={close}>close</Button>
+          <Button onClick={close}>close</Button>
         </div>
       </Modal>
     </div>
