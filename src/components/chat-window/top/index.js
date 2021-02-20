@@ -1,5 +1,6 @@
 import React, { memo } from "react";
 import { useCurrentRoom } from "../../../context/current-room.context";
+import EditRoomModal from "./EditRoomModal";
 import RoomInfoBtnModal from "./RoomInfoBtnModal";
 
 const Top = () => {
@@ -8,7 +9,9 @@ const Top = () => {
   return (
     <div>
       <h2>{name}</h2>
-      <span>todo</span>
+      <span>
+        <EditRoomModal />
+      </span>
       <RoomInfoBtnModal />
     </div>
   );

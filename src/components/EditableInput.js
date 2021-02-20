@@ -16,6 +16,9 @@ const EditableInput = ({
   label = null,
   placeholder = "Write your value",
   emptyMsg = "Input is empty",
+  multi = false,
+  rows = 1,
+  labelwidth = 80,
 }) => {
   const [input, setInput] = useState(initialValue);
   const [isEditable, setIsEditable] = useState(false);
@@ -47,6 +50,9 @@ const EditableInput = ({
       <FormControl variant="outlined">
         <InputLabel>{label}</InputLabel>
         <OutlinedInput
+          style={{ marginBottom: "2em" }}
+          multiline={multi}
+          rows={rows}
           placeholder={placeholder}
           value={input}
           onChange={onInputChange}
@@ -63,7 +69,7 @@ const EditableInput = ({
               )}
             </InputAdornment>
           }
-          labelWidth={80}
+          labelWidth={labelwidth}
         />
       </FormControl>
     </div>

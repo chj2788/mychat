@@ -8,7 +8,7 @@ import {
 import React, { useState } from "react";
 import { useModalState } from "../misc/custom-hooks";
 import firebase from "firebase/app";
-import { database } from "../misc/firebase";
+import { auth, database } from "../misc/firebase";
 import AddIcon from "@material-ui/icons/Add";
 
 const useStyles = makeStyles((theme) => ({
@@ -45,15 +45,6 @@ const CreateRoom = () => {
   const [formDes, setFormDes] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const onNameChange = (event) => {
-    console.log(event.target.value);
-    setFormName(event.target.value);
-  };
-  const onDesChange = (event) => {
-    console.log(event.target.value);
-    setFormDes(event.target.value);
-  };
-
   const onSubmit = async () => {
     setIsLoading(true);
 
@@ -61,6 +52,12 @@ const CreateRoom = () => {
       name: formName,
       description: formDes,
       createdAt: firebase.database.ServerValue.TIMESTAMP,
+      admins: {
+        [auth.currentUser.uid]: true,
+      },
+      fcmUsers: {
+        [auth.currentUser.uid]: true,
+      },
     };
     try {
       await database.ref("rooms").push(newRoomData);
@@ -73,6 +70,15 @@ const CreateRoom = () => {
       setIsLoading(false);
       alert(err.message);
     }
+  };
+
+  const onNameChange = (event) => {
+    console.log(event.target.value);
+    setFormName(event.target.value);
+  };
+  const onDesChange = (event) => {
+    console.log(event.target.value);
+    setFormDes(event.target.value);
   };
 
   return (
