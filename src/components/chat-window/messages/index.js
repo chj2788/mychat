@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { auth, database } from "../../../misc/firebase";
-import { transformToArrWithId } from "../../../misc/helpers";
+import { groupBy, transformToArrWithId } from "../../../misc/helpers";
 import MessageItem from "./MessageItem";
 
 const Messages = () => {
@@ -106,19 +106,33 @@ const Messages = () => {
     [chatId, messages]
   );
 
+  const renderMessages = () => {
+    const groups = groupBy(messages, (item) =>
+      new Date(item.createdAt).toDateString()
+    );
+    const items = [];
+
+    Object.keys(groups).forEach((date) => {
+      items.push(<li key={date}>{date}</li>);
+
+      const msgs = groups[date].map((msg) => (
+        <MessageItem
+          key={msg.id}
+          message={msg}
+          handleAdmin={handleAdmin}
+          handleLike={handleLike}
+          handleDelete={handleDelete}
+        />
+      ));
+      items.push(...msgs);
+    });
+    return items;
+  };
+
   return (
     <ul style={{ listStyleType: "none", margin: 0, padding: 0 }}>
       {isChatEmpty && <li>No messages yet</li>}
-      {canShowMessages &&
-        messages.map((msg) => (
-          <MessageItem
-            key={msg.id}
-            message={msg}
-            handleAdmin={handleAdmin}
-            handleLike={handleLike}
-            handleDelete={handleDelete}
-          />
-        ))}
+      {canShowMessages && renderMessages()}
     </ul>
   );
 };
