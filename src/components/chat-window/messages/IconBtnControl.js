@@ -22,14 +22,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const IconBtnControl = ({ isLiked, onClick, badgeContent, isVisible }) => {
+const IconBtnControl = ({
+  isLiked,
+  onClick,
+  badgeContent,
+  isVisible,
+  tooltip,
+  icon,
+}) => {
   const classes = useStyles();
   return (
     <Fragment style={{ visibility: isVisible ? "visible" : "hidden" }}>
       <Tooltip
         className={classes.tooltip}
         arrow
-        title={"Like this message"}
+        title={tooltip}
         placement="top-start"
       >
         <Badge
@@ -42,10 +49,11 @@ const IconBtnControl = ({ isLiked, onClick, badgeContent, isVisible }) => {
           }}
         >
           <IconButton className={classes.iconbtn} onClick={onClick}>
-            <FavoriteIcon
+            {/* <FavoriteIcon
               // className={classes.heart}
               style={{ color: { isLiked } ? "red" : "white" }}
-            />
+            /> */}
+            {icon}
           </IconButton>
         </Badge>
       </Tooltip>

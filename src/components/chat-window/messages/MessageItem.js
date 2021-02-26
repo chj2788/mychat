@@ -8,6 +8,8 @@ import AvatarProfile from "../../AvatarProfile";
 import PresenceDot from "../../PresenceDot";
 import ProfileInfoBtnModal from "./ProfileInfoBtnModal";
 import IconBtnControl from "./IconBtnControl";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const useStyles = makeStyles((theme) => ({
   avatar: { display: "inline-block" },
@@ -24,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MessageItem = ({ message, handleAdmin, handleLike }) => {
+const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
   const classes = useStyles();
   const { author, createdAt, text, likes, likeCount } = message;
   const [selfRef, isHover] = useHover();
@@ -68,8 +70,25 @@ const MessageItem = ({ message, handleAdmin, handleLike }) => {
         isLiked={isLiked}
         isvisible={isHover}
         onClick={() => handleLike(message.id)}
+        tooltip="Like this message"
         badgeContent={likeCount}
+        icon={
+          <FavoriteIcon
+            // className={classes.heart}
+            style={{ color: { isLiked } ? "red" : "white" }}
+          />
+        }
       />
+
+      {isAuthor && (
+        <IconBtnControl
+          isvisible={isHover}
+          tooltip="Delete this message"
+          onClick={() => handleDelete(message.id)}
+          icon={<DeleteIcon />}
+        />
+      )}
+
       <div>
         <span>{text}</span>
       </div>
