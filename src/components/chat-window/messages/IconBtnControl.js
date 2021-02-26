@@ -1,6 +1,7 @@
 import React from "react";
 import { Badge, IconButton, makeStyles, Tooltip } from "@material-ui/core";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import { Fragment } from "react";
 
 const useStyles = makeStyles((theme) => ({
   time: {
@@ -12,17 +13,19 @@ const useStyles = makeStyles((theme) => ({
   },
   heart: {
     fontSize: "1em",
-    color: "red",
+    "&:hover": {
+      backGroundcolor: "#e57373",
+    },
   },
   badge: {
     padding: "0 4px",
   },
 }));
 
-const IconBtnControl = () => {
+const IconBtnControl = ({ isLiked, onClick, badgeContent, isVisible }) => {
   const classes = useStyles();
   return (
-    <>
+    <Fragment style={{ visibility: isVisible ? "visible" : "hidden" }}>
       <Tooltip
         className={classes.tooltip}
         arrow
@@ -31,19 +34,22 @@ const IconBtnControl = () => {
       >
         <Badge
           className={classes.badge}
-          badgeContent={5}
+          badgeContent={badgeContent}
           color="secondary"
           anchorOrigin={{
             vertical: "top",
             horizontal: "right",
           }}
         >
-          <IconButton className={classes.iconbtn} onClick={() => {}}>
-            <FavoriteIcon className={classes.heart} />
+          <IconButton className={classes.iconbtn} onClick={onClick}>
+            <FavoriteIcon
+              // className={classes.heart}
+              style={{ color: { isLiked } ? "red" : "white" }}
+            />
           </IconButton>
         </Badge>
       </Tooltip>
-    </>
+    </Fragment>
   );
 };
 

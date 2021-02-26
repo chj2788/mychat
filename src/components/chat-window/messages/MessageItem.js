@@ -24,9 +24,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MessageItem = ({ message, handleAdmin }) => {
+const MessageItem = ({ message, handleAdmin, handleLike }) => {
   const classes = useStyles();
-  const { author, createdAt, text } = message;
+  const { author, createdAt, text, likes, likeCount } = message;
   const [selfRef, isHover] = useHover();
   const isAdmin = useCurrentRoom((v) => v.isAdmin);
   const admins = useCurrentRoom((v) => v.admins);
@@ -34,6 +34,8 @@ const MessageItem = ({ message, handleAdmin }) => {
   const isMsgAuthorAdmin = admins.includes(author.uid);
   const isAuthor = auth.currentUser.uid === author.uid;
   const canGrantAdmin = isAdmin && !isAuthor;
+
+  const isLiked = likes && Object.keys(likes).includes(auth.currentUser.uid);
 
   return (
     <li
@@ -62,7 +64,12 @@ const MessageItem = ({ message, handleAdmin }) => {
       </ProfileInfoBtnModal>
       <TimeAgo className={classes.time} datetime={createdAt} />
 
-      <IconBtnControl />
+      <IconBtnControl
+        isLiked={isLiked}
+        isvisible={isHover}
+        onClick={() => handleLike(message.id)}
+        badgeContent={likeCount}
+      />
       <div>
         <span>{text}</span>
       </div>
