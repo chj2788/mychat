@@ -20,23 +20,23 @@ const Home = () => {
   return (
     <RoomsProvider>
       <div className={classes.root}>
-        <Grid
-          container
-          direction="column"
-          justify="center"
-          alignItems="stretch"
-        >
-          <Grid item xs={12} md={4} className={classes.drawer}>
-            <ResponsiveDrawer />
-          </Grid>
-          <Switch>
-            <Route exact path="/chat/:chatId">
+        <Switch>
+          <Route exact path="/chat/:chatId">
+            <Grid
+              container
+              direction="column"
+              justify="center"
+              alignItems="stretch"
+            >
+              <Grid item xs={12} md={4} className={classes.drawer}>
+                <ResponsiveDrawer />
+              </Grid>
               <Grid item xs={12}>
                 <Chat />
-              </Grid>
-            </Route>
-          </Switch>
-        </Grid>
+              </Grid>{" "}
+            </Grid>
+          </Route>
+        </Switch>
       </div>
     </RoomsProvider>
   );

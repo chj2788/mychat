@@ -7,19 +7,18 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
-import { Button, Card, Grid, Modal } from "@material-ui/core";
+import { Grid, Modal } from "@material-ui/core";
 import { useModalState } from "../misc/custom-hooks";
 import Dashboard from "./Dashboard";
 import { auth, database } from "../misc/firebase";
 import CreateRoom from "./CreateRoom";
 import ChatRoomList from "./rooms/ChatRoomList";
-import Chat from "./rooms/Chat";
 import AvatarProfile from "./AvatarProfile";
 import { isOfflineForDatabase, useProfile } from "../context/profile.context";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import ChatName from "./chat-window/top/ChatName";
 
 const drawerWidth = "35%";
 
@@ -185,9 +184,7 @@ function ResponsiveDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            Responsive drawer
-          </Typography>
+          <ChatName />
         </Toolbar>
       </AppBar>
 

@@ -26,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#679e37",
+    "&:hover": {
+      backgroundColor: "#366f00",
+    },
   },
 }));
 
@@ -61,7 +65,7 @@ const EditRoomModal = () => {
   return (
     <div>
       <Button className={classes.button} onClick={open}>
-        A
+        Admin
       </Button>
       <Modal open={isOpen} onClose={close} className={classes.modal}>
         <div className={classes.paper}>

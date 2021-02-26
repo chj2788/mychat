@@ -37,7 +37,7 @@ const RoomInfoBtnModal = () => {
   return (
     <>
       <Button className={classes.button} onClick={open}>
-        Room information
+        Room Info
       </Button>
       <Modal open={isOpen} onClose={close} className={classes.modal}>
         <div className={classes.paper}>

@@ -1,11 +1,6 @@
-import {
-  FormControl,
-  IconButton,
-  InputAdornment,
-  OutlinedInput,
-} from "@material-ui/core";
+import { IconButton, InputAdornment, OutlinedInput } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import firebase from "firebase/app";
 import { useProfile } from "../../../context/profile.context";
 import { useParams } from "react-router";
@@ -72,23 +67,22 @@ const Bottom = () => {
   };
 
   return (
-    <div>
-      <FormControl variant="outlined">
-        <OutlinedInput
-          placeholder="Write a new message here..."
-          value={input}
-          onChange={onInputChange}
-          onKeyDown={onKeyDown}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton onClick={onSendClick} disabled={isLoading}>
-                <SendIcon />
-              </IconButton>
-            </InputAdornment>
-          }
-        />
-      </FormControl>
-    </div>
+    <>
+      <OutlinedInput
+        fullWidth
+        placeholder="Write a new message here..."
+        value={input}
+        onChange={onInputChange}
+        onKeyDown={onKeyDown}
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton onClick={onSendClick} disabled={isLoading}>
+              <SendIcon />
+            </IconButton>
+          </InputAdornment>
+        }
+      />
+    </>
   );
 };
 

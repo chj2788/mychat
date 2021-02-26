@@ -1,0 +1,125 @@
+[33mcommit 78676e9f31bcc6f53c1b12b82c60a337353b5383[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Tue Feb 23 20:10:13 2021 +0900
+
+    added onclick event to a like button
+
+[33mcommit 4212b2115471e4ac340a10bc6f6c1af42e597690[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Sun Feb 21 17:29:00 2021 +0900
+
+    added like button with number badge
+
+[33mcommit 102ed35e8bd867cd3e2cbadd944b03945fe85aef[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Sat Feb 20 16:10:30 2021 +0900
+
+    added button to grant or revoke admin access
+
+[33mcommit 0c0f2f0c2776c9c3c95488a600b35edf25920e6d[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Sat Feb 20 15:31:29 2021 +0900
+
+    update security rules for role-based permission
+
+[33mcommit 9b9989d51aa624eb1e0f63e9fd7eb127eeb3b1df[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Sat Feb 20 15:09:56 2021 +0900
+
+    added edit room modal
+
+[33mcommit 973100078771eb1237c40854b8cb503101320eb2[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Sat Feb 20 14:00:45 2021 +0900
+
+    displayed real-time presence
+
+[33mcommit b91b006dc2182dd02d499587a1260948de4c0aba[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Fri Feb 19 20:46:27 2021 +0900
+
+    displayed messages
+
+[33mcommit 4566536e9442191612896d50204e7be17a117e14[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Fri Feb 19 20:25:40 2021 +0900
+
+    update all user references if data is updated
+
+[33mcommit 18268c845b1976f0b1231139c1c2347f5bd31325[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Fri Feb 19 20:06:39 2021 +0900
+
+    displayed last message in chat lists
+
+[33mcommit eb94cef8855f822a1098f34d06f0824e9b91e021[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Fri Feb 19 19:46:57 2021 +0900
+
+    added input to send message and save them to firebase database
+
+[33mcommit f1d6f29fda0c9faef3419a86613a9d267ed0d2a3[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Wed Feb 17 15:56:42 2021 +0900
+
+    modified sidebar styling
+
+[33mcommit 0f53e5e91fc889821a5f36e804f39b3756a3931a[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Tue Feb 16 15:53:12 2021 +0900
+
+    added some features to conversation lists
+
+[33mcommit 8e4aa57096b233e3273613f8817277a796f81aa8[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Mon Feb 15 20:26:40 2021 +0900
+
+    created conversation lists
+
+[33mcommit c009046fadf22ba54bd7bb47f5e90ed895cc69d0[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Sun Feb 14 18:26:08 2021 +0900
+
+    create room feature added
+
+[33mcommit f5aa400806b0f8cc5ebb84dbae41cc823543fd58[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Mon Feb 8 14:32:47 2021 +0900
+
+    created user avatar and display it from database
+
+[33mcommit 1205fe71d18f7063904adac70966ece46e5dcbc8[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Sun Feb 7 13:56:13 2021 +0900
+
+    linked facebook and google to one account
+
+[33mcommit c4b2d79156292a338a7ab7cfb1de1e7f5a21fbb1[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Fri Feb 5 14:01:47 2021 +0900
+
+    manage user with profile context
+
+[33mcommit bd1e9a8702b5a8010e943ba12ad996833968a751[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Thu Feb 4 22:49:18 2021 +0900
+
+    added sign-in page with signin options(Google, Facebook)
+
+[33mcommit 99da1b60c6d22aa8afc90155f5752e48563ead12[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Thu Feb 4 16:19:27 2021 +0900
+
+    created public and private routes
+
+[33mcommit bdff6f0999e67389dc25bf8bab7ff450140f544c[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Wed Feb 3 19:27:24 2021 +0900
+
+    initialized firebase
+
+[33mcommit c61d574862c1fc4ad18688fb358c97d2d1e1ca79[m
+Author: chj2788 <chj2788@gmail.com>
+Date:   Wed Feb 3 18:40:41 2021 +0900
+
+    Initialize project using Create React App

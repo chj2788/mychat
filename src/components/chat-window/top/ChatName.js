@@ -1,20 +1,11 @@
-import {
-  Backdrop,
-  CircularProgress,
-  Grid,
-  makeStyles,
-} from "@material-ui/core";
+import { Backdrop, CircularProgress, makeStyles } from "@material-ui/core";
 import React from "react";
-import Messages from "../chat-window/messages";
-import ChatTop from "../chat-window/top";
-import ChatBottom from "../chat-window/bottom";
-import { faFileExcel } from "@fortawesome/free-regular-svg-icons";
-import { faColumns } from "@fortawesome/free-solid-svg-icons";
+import ChatTop from "../../chat-window/top";
 import { useParams } from "react-router";
-import { useRooms } from "../../context/rooms.context";
-import { CurrentRoomProvider } from "../../context/current-room.context";
-import { transformToArr } from "../../misc/helpers";
-import { auth } from "../../misc/firebase";
+import { useRooms } from "../../../context/rooms.context";
+import { transformToArr } from "../../../misc/helpers";
+import { CurrentRoomProvider } from "../../../context/current-room.context";
+import { auth } from "../../../misc/firebase";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,13 +26,9 @@ const useStyles = makeStyles((theme) => ({
   notfound: {
     textAlign: "center",
   },
-  contentWrapper: {
-    width: "85%",
-    margin: "auto",
-  },
 }));
 
-const Chat = () => {
+const ChatName = () => {
   const classes = useStyles();
 
   const { chatId } = useParams();
@@ -76,18 +63,9 @@ const Chat = () => {
 
   return (
     <CurrentRoomProvider data={currentRoomData}>
-      <Grid container direction="column">
-        <Grid item xs={12} md={12} lg={12}>
-          <div className={classes.messages}>
-            <Messages />
-          </div>
-        </Grid>
-        <Grid item xs={12} md={12} lg={12}>
-          <ChatBottom />
-        </Grid>
-      </Grid>
+      <ChatTop />
     </CurrentRoomProvider>
   );
 };
 
-export default Chat;
+export default ChatName;

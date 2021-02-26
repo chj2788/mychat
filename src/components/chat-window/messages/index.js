@@ -50,7 +50,7 @@ const Messages = () => {
   );
 
   return (
-    <ul>
+    <ul style={{ listStyleType: "none", margin: 0, padding: 0 }}>
       {isChatEmpty && <li>No messages yet</li>}
       {canShowMessages &&
         messages.map((msg) => (
