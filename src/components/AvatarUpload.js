@@ -139,7 +139,7 @@ const AvatarUpload = () => {
           type="file"
           accept={fileInputTypes}
           onChange={onFileInputChange}
-        ></input>
+        />
       </label>
 
       <Modal open={isOpen} onClose={close} className={classes.modal}>

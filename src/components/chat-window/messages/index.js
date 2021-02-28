@@ -1,3 +1,4 @@
+import { Divider } from "@material-ui/core";
 import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { auth, database } from "../../../misc/firebase";
@@ -24,7 +25,7 @@ const Messages = () => {
     return () => {
       messagesRef.off("value");
     };
-  });
+  }, [chatId]);
 
   const handleAdmin = useCallback(
     async (uid) => {
@@ -77,6 +78,7 @@ const Messages = () => {
 
   const handleDelete = useCallback(
     async (msgId) => {
+      // eslint-disable-next-line no-alert
       if (!window.confirm("Delete this message?")) {
         return;
       }
@@ -100,7 +102,7 @@ const Messages = () => {
         await database.ref().update(updates);
         alert("Message has been deleted");
       } catch (err) {
-        alert(err.message);
+        return alert(err.message);
       }
     },
     [chatId, messages]
@@ -110,10 +112,22 @@ const Messages = () => {
     const groups = groupBy(messages, (item) =>
       new Date(item.createdAt).toDateString()
     );
+
     const items = [];
 
     Object.keys(groups).forEach((date) => {
-      items.push(<li key={date}>{date}</li>);
+      items.push(
+        <li
+          style={{
+            marginBottom: "2em",
+            textAlign: "center",
+            fontWeight: "bold",
+          }}
+          key={date}
+        >
+          {date}
+        </li>
+      );
 
       const msgs = groups[date].map((msg) => (
         <MessageItem
@@ -124,13 +138,19 @@ const Messages = () => {
           handleDelete={handleDelete}
         />
       ));
-      items.push(...msgs);
+      items.push(...msgs, <Divider style={{ margin: "2em" }} />);
     });
     return items;
   };
 
   return (
-    <ul style={{ listStyleType: "none", margin: 0, padding: 0 }}>
+    <ul
+      style={{
+        listStyleType: "none",
+        marginLeft: 0,
+        padding: 0,
+      }}
+    >
       {isChatEmpty && <li>No messages yet</li>}
       {canShowMessages && renderMessages()}
     </ul>

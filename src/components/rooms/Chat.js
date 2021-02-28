@@ -6,10 +6,7 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import Messages from "../chat-window/messages";
-import ChatTop from "../chat-window/top";
 import ChatBottom from "../chat-window/bottom";
-import { faFileExcel } from "@fortawesome/free-regular-svg-icons";
-import { faColumns } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router";
 import { useRooms } from "../../context/rooms.context";
 import { CurrentRoomProvider } from "../../context/current-room.context";
@@ -22,8 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   messages: {
     width: "100%",
-    height: "600px",
-    textAlign: "center",
+    height: "100%",
   },
   bottom: {
     position: "fixed",
@@ -77,13 +73,21 @@ const Chat = () => {
   return (
     <CurrentRoomProvider data={currentRoomData}>
       <Grid container direction="column">
-        <Grid item xs={12} md={12} lg={12}>
+        <Grid item xs={12}>
           <div className={classes.messages}>
             <Messages />
           </div>
         </Grid>
-        <Grid item xs={12} md={12} lg={12}>
-          <ChatBottom />
+        <Grid item xs={12}>
+          <div
+            style={{
+              margin: "1em 3em",
+              position: "-webkit-sticky",
+              // position: "sticky",
+            }}
+          >
+            <ChatBottom />
+          </div>
         </Grid>
       </Grid>
     </CurrentRoomProvider>

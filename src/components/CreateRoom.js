@@ -73,11 +73,9 @@ const CreateRoom = () => {
   };
 
   const onNameChange = (event) => {
-    console.log(event.target.value);
     setFormName(event.target.value);
   };
   const onDesChange = (event) => {
-    console.log(event.target.value);
     setFormDes(event.target.value);
   };
 

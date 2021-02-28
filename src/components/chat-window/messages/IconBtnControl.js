@@ -22,17 +22,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const IconBtnControl = ({
-  isLiked,
-  onClick,
-  badgeContent,
-  isVisible,
-  tooltip,
-  icon,
-}) => {
+const IconBtnControl = ({ onClick, badgeContent, tooltip, icon }) => {
   const classes = useStyles();
   return (
-    <Fragment style={{ visibility: isVisible ? "visible" : "hidden" }}>
+    <>
       <Tooltip
         className={classes.tooltip}
         arrow
@@ -57,7 +50,7 @@ const IconBtnControl = ({
           </IconButton>
         </Badge>
       </Tooltip>
-    </Fragment>
+    </>
   );
 };
 

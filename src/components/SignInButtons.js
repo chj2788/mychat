@@ -3,7 +3,13 @@ import firebase from "firebase/app";
 import { auth, database } from "../misc/firebase";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import GTranslateIcon from "@material-ui/icons/GTranslate";
+import {
+  faFacebook,
+  faFacebookF,
+  faGoogle,
+} from "@fortawesome/free-brands-svg-icons";
 // import { Alert } from "@material-ui/lab";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const useStyles = makeStyles({
   loginButtonFB: {
@@ -92,15 +98,22 @@ const SignInButtons = () => {
             className={classes.loginButtonFB}
             variant="contained"
             onClick={onFBSignIn}
+            fullWidth
           >
-            <FacebookIcon /> Continue with Facebook
+            <FontAwesomeIcon
+              icon={faFacebookF}
+              style={{ margin: "auto 1em" }}
+            />
+            Continue with Facebook
           </Button>
           <Button
             className={classes.loginButtonGG}
             variant="contained"
             onClick={onGGSignIn}
+            fullWidth
           >
-            <GTranslateIcon /> Continue with Google
+            <FontAwesomeIcon icon={faGoogle} style={{ margin: "auto 1em" }} />
+            Continue with Google
           </Button>
         </Grid>
       </Container>

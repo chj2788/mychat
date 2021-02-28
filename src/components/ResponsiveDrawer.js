@@ -9,7 +9,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
-import { Grid, Modal } from "@material-ui/core";
+import { Grid, Modal, Tooltip } from "@material-ui/core";
 import { useModalState } from "../misc/custom-hooks";
 import Dashboard from "./Dashboard";
 import { auth, database } from "../misc/firebase";
@@ -19,6 +19,7 @@ import AvatarProfile from "./AvatarProfile";
 import { isOfflineForDatabase, useProfile } from "../context/profile.context";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChatName from "./chat-window/top/ChatName";
+import Chat from "./rooms/Chat";
 
 const drawerWidth = "35%";
 
@@ -27,13 +28,26 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
   },
   drawer: {
-    width: drawerWidth,
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
+    [theme.breakpoints.up("md")]: {
+      width: drawerWidth,
+    },
     flexShrink: 0,
   },
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    width: `calc(100% - ${drawerWidth})`,
+    marginLeft: drawerWidth,
+    transition: theme.transitions.create(["margin", "width"], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
     }),
   },
   menuButton: {
@@ -45,7 +59,12 @@ const useStyles = makeStyles((theme) => ({
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
-    width: "35%",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
+    [theme.breakpoints.up("md")]: {
+      width: drawerWidth,
+    },
     backgroundColor: "#212121",
   },
   modal: {
@@ -94,9 +113,7 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(25),
     margin: "0 auto 2em",
     cursor: "pointer",
-    // opacity: 0.2,
     "&:hover": {
-      // cursor: "pointer",
       opacity: 0.2,
     },
   },
@@ -144,14 +161,19 @@ function ResponsiveDrawer() {
         className={classes.buttonGrid}
       >
         <p className={classes.name}>Hey, {profile.name}</p>
-
-        <AvatarProfile
-          className={classes.profile}
-          src={profile.avatar}
-          name={profile.name}
-          onClick={open}
-        />
-
+        <Tooltip
+          arrow
+          title={"Click to edit your profile"}
+          placement="top-start"
+        >
+          <div onClick={open}>
+            <AvatarProfile
+              className={classes.profile}
+              src={profile.avatar}
+              name={profile.name}
+            />
+          </div>
+        </Tooltip>
         <Modal open={isOpen} onClose={close} className={classes.modal}>
           <Dashboard onSignOut={onSignOut} />
         </Modal>
@@ -205,13 +227,14 @@ function ResponsiveDrawer() {
         {drawer}
       </Drawer>
 
-      <main
+      {/* <main
         className={clsx(classes.content, {
-          [classes.contentShift]: open,
+          [classes.contentShift]: opening,
         })}
-      >
-        <div className={classes.drawerHeader} />
-      </main>
+      > */}
+      <div className={classes.drawerHeader} />
+      {/* <Chat /> */}
+      {/* </main> */}
     </div>
   );
 }

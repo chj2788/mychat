@@ -1,5 +1,11 @@
 import React, { memo } from "react";
-import { Button, makeStyles, Modal, Typography } from "@material-ui/core";
+import {
+  Button,
+  makeStyles,
+  Modal,
+  Tooltip,
+  Typography,
+} from "@material-ui/core";
 import { useCurrentRoom } from "../../../context/current-room.context";
 import EditRoomModal from "./EditRoomModal";
 import RoomInfoBtnModal from "./RoomInfoBtnModal";
@@ -8,10 +14,13 @@ import { useModalState } from "../../../misc/custom-hooks";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    flexGrow: 1,
   },
   chatName: {
     textAlign: "center",
     justifyContent: "center",
+    cursor: "help",
+    flexGrow: 1,
   },
   modal: {
     display: "flex",
@@ -35,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Top = () => {
+const ChatTop = () => {
   const name = useCurrentRoom((v) => v.name);
   const description = useCurrentRoom((v) => v.description);
   const isAdmin = useCurrentRoom((v) => v.isAdmin);
@@ -45,9 +54,11 @@ const Top = () => {
 
   return (
     <div className={classes.root}>
-      <Typography variant="h6" className={classes.chatName} onClick={open}>
-        {name}
-      </Typography>
+      <Tooltip arrow title={"Click to see room info"} placement="top-start">
+        <Typography variant="h6" className={classes.chatName} onClick={open}>
+          {name}
+        </Typography>
+      </Tooltip>
       {/* <Button className={classes.button} onClick={open}>
         Room Info
       </Button> */}
@@ -59,9 +70,9 @@ const Top = () => {
         </div>
       </Modal>
       {/* <RoomInfoBtnModal /> */}
-      <span>{isAdmin && <EditRoomModal />}</span>
+      <div>{isAdmin && <EditRoomModal />}</div>
     </div>
   );
 };
 
-export default memo(Top);
+export default memo(ChatTop);

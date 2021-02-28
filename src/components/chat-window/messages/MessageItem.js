@@ -1,4 +1,4 @@
-import { Button, makeStyles } from "@material-ui/core";
+import { Button, makeStyles, Typography } from "@material-ui/core";
 import React, { memo } from "react";
 import TimeAgo from "timeago-react";
 import { useCurrentRoom } from "../../../context/current-room.context";
@@ -9,7 +9,7 @@ import PresenceDot from "../../PresenceDot";
 import ProfileInfoBtnModal from "./ProfileInfoBtnModal";
 import IconBtnControl from "./IconBtnControl";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import DeleteIcon from "@material-ui/icons/Delete";
+import ClearIcon from "@material-ui/icons/Clear";
 
 const useStyles = makeStyles((theme) => ({
   avatar: { display: "inline-block" },
@@ -21,15 +21,22 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
   },
   msg: {
-    justifyContent: "flex-start",
-    position: "static",
+    margin: "2em 3em",
+  },
+  msgbox: {
+    background: theme.palette.primary.light,
+    width: "fit-content",
+    borderRadius: "1em",
+    padding: "0.2em 1em",
   },
 }));
 
 const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
   const classes = useStyles();
   const { author, createdAt, text, likes, likeCount } = message;
+
   const [selfRef, isHover] = useHover();
+
   const isAdmin = useCurrentRoom((v) => v.isAdmin);
   const admins = useCurrentRoom((v) => v.admins);
 
@@ -67,30 +74,26 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
       <TimeAgo className={classes.time} datetime={createdAt} />
 
       <IconBtnControl
-        isLiked={isLiked}
-        isvisible={isHover}
         onClick={() => handleLike(message.id)}
         tooltip="Like this message"
         badgeContent={likeCount}
         icon={
           <FavoriteIcon
-            // className={classes.heart}
-            style={{ color: { isLiked } ? "red" : "white" }}
+            style={isLiked ? { color: "red" } : { color: "white" }}
           />
         }
       />
 
       {isAuthor && (
         <IconBtnControl
-          isvisible={isHover}
           tooltip="Delete this message"
           onClick={() => handleDelete(message.id)}
-          icon={<DeleteIcon />}
+          icon={<ClearIcon />}
         />
       )}
 
-      <div>
-        <span>{text}</span>
+      <div style={{ marginLeft: "3em" }}>
+        <Typography className={classes.msgbox}>{text}</Typography>
       </div>
     </li>
   );
