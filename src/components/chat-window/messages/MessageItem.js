@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
   },
   msg: {
-    margin: "2em 3em",
+    margin: "2em 1em",
     maxWidth: "40em",
     wordWrap: "break-word",
   },
@@ -76,6 +76,7 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
       <TimeAgo className={classes.time} datetime={createdAt} />
 
       <IconBtnControl
+        isVisible={isHover}
         onClick={() => handleLike(message.id)}
         tooltip="Like this message"
         badgeContent={likeCount}
@@ -88,6 +89,7 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
 
       {isAuthor && (
         <IconBtnControl
+          isVisible={isHover}
           tooltip="Delete this message"
           onClick={() => handleDelete(message.id)}
           icon={<ClearIcon />}

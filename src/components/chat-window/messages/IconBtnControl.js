@@ -22,10 +22,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const IconBtnControl = ({ onClick, badgeContent, tooltip, icon }) => {
+const IconBtnControl = ({
+  onClick,
+  badgeContent,
+  tooltip,
+  icon,
+  isVisible = true,
+}) => {
   const classes = useStyles();
   return (
-    <>
+    <span
+      style={isVisible ? { visibility: "visible" } : { visibility: "hidden" }}
+    >
       <Tooltip
         className={classes.tooltip}
         arrow
@@ -50,7 +58,7 @@ const IconBtnControl = ({ onClick, badgeContent, tooltip, icon }) => {
           </IconButton>
         </Badge>
       </Tooltip>
-    </>
+    </span>
   );
 };
 
