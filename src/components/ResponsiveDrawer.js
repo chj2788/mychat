@@ -239,7 +239,7 @@ function ResponsiveDrawer() {
       >
         <div className={classes.drawerHeader} />
         {/* <Grid item xs={12}> */}
-        <Chat />
+        <Chat opening={opening} />
         {/* </Grid> */}
       </main>
     </div>

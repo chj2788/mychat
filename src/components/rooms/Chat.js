@@ -13,6 +13,7 @@ import { useRooms } from "../../context/rooms.context";
 import { CurrentRoomProvider } from "../../context/current-room.context";
 import { transformToArr } from "../../misc/helpers";
 import { auth } from "../../misc/firebase";
+import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,18 +30,19 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
     position: "fixed",
     width: "90%",
-    alignContent: "center",
+  },
+  bottomShift: {
+    margin: "1em auto",
+    left: "auto",
+    right: "auto",
+    width: "62.5%",
   },
   notfound: {
     textAlign: "center",
   },
-  contentWrapper: {
-    width: "85%",
-    margin: "auto",
-  },
 }));
 
-const Chat = () => {
+const Chat = ({ opening }) => {
   const classes = useStyles();
 
   const { chatId } = useParams();
@@ -75,18 +77,16 @@ const Chat = () => {
 
   return (
     <CurrentRoomProvider data={currentRoomData}>
-      {/* <Grid container direction="column"> */}
-      {/* <Grid item xs={12}> */}
       <div className={classes.messages}>
         <Messages />
       </div>
-      {/* </Grid> */}
-      {/* <Grid item xs={12}> */}
-      <div className={classes.bottom}>
+      <div
+        className={clsx(classes.bottom, {
+          [classes.bottomShift]: opening,
+        })}
+      >
         <ChatBottom />
       </div>
-      {/* </Grid> */}
-      {/* </Grid> */}
     </CurrentRoomProvider>
   );
 };

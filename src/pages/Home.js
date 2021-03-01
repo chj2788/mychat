@@ -9,13 +9,11 @@ const useStyles = makeStyles({
   root: {
     backgroundColor: "#212121",
     display: "flex",
-    // backgroundSize: "100%",
   },
 });
 
 const Home = () => {
   const classes = useStyles();
-  // const { isExact } = useRouteMatch();
   return (
     <RoomsProvider>
       <div className={classes.root}>
@@ -30,9 +28,6 @@ const Home = () => {
               <Grid item xs={12} className={classes.drawer}>
                 <ResponsiveDrawer />
               </Grid>
-              {/* <Grid item xs={12}>
-                <Chat />
-              </Grid> */}
             </Route>
             <Route>
               <Grid item xs={12} className={classes.drawer}>

@@ -22,6 +22,8 @@ const useStyles = makeStyles((theme) => ({
   },
   msg: {
     margin: "2em 3em",
+    maxWidth: "40em",
+    wordWrap: "break-word",
   },
   msgbox: {
     background: theme.palette.primary.light,

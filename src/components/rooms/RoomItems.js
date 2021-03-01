@@ -45,6 +45,10 @@ const RoomItems = ({ room }) => {
   const classes = useStyles();
 
   const { createdAt, name, lastMessage } = room;
+  const trimmedLastMessage =
+    lastMessage.text.length > 50
+      ? lastMessage.text.substring(0, 50) + "..."
+      : lastMessage.text;
 
   return (
     <div>
@@ -67,7 +71,7 @@ const RoomItems = ({ room }) => {
           <Typography className={classes.name}>
             {lastMessage.author.name}
           </Typography>
-          <div style={{ fontWeight: "bold" }}>{lastMessage.text}</div>
+          <div style={{ fontWeight: "bold" }}>{trimmedLastMessage}</div>
         </>
       ) : (
         <ListItemText className={classes.text}>No messages yet...</ListItemText>
