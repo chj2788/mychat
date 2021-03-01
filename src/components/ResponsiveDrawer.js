@@ -87,7 +87,12 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth,
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "-100%",
+    },
+    [theme.breakpoints.up("md")]: {
+      marginLeft: "-35%",
+    },
   },
   contentShift: {
     transition: theme.transitions.create("margin", {
@@ -226,15 +231,17 @@ function ResponsiveDrawer() {
         </div>
         {drawer}
       </Drawer>
-
-      {/* <main
+      <main
         className={clsx(classes.content, {
           [classes.contentShift]: opening,
         })}
-      > */}
-      <div className={classes.drawerHeader} />
-      {/* <Chat /> */}
-      {/* </main> */}
+        style={{ minHeight: "100vh", height: "100%" }}
+      >
+        <div className={classes.drawerHeader} />
+        {/* <Grid item xs={12}> */}
+        <Chat />
+        {/* </Grid> */}
+      </main>
     </div>
   );
 }

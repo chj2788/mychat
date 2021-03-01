@@ -30,9 +30,9 @@ const Home = () => {
               <Grid item xs={12} className={classes.drawer}>
                 <ResponsiveDrawer />
               </Grid>
-              <Grid item xs={12}>
+              {/* <Grid item xs={12}>
                 <Chat />
-              </Grid>
+              </Grid> */}
             </Route>
             <Route>
               <Grid item xs={12} className={classes.drawer}>

@@ -23,16 +23,21 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "0.9em",
     color: "gray",
   },
-  roomname: { margin: 0 },
+  roomname: { margin: 0, color: theme.palette.primary.light },
   message: {
     alignItems: "center",
   },
-
+  profile: {
+    display: "inline-block",
+    height: "1.2em",
+    width: "1.2em",
+  },
   text: {
     fontSize: "1em",
   },
   name: {
     fontStyle: "italic",
+    display: "inline",
   },
 }));
 
@@ -44,7 +49,7 @@ const RoomItems = ({ room }) => {
   return (
     <div>
       <div className={classes.content}>
-        <h3 className={classes.roomname}>{name}</h3>
+        <h2 className={classes.roomname}>{name}</h2>
         <TimeAgo
           className={classes.time}
           datetime={
@@ -54,17 +59,15 @@ const RoomItems = ({ room }) => {
       </div>
       {lastMessage ? (
         <>
-          <div>
-            <AvatarProfile
-              src={lastMessage.author.avatar}
-              name={lastMessage.author.name}
-              className={classes.profile}
-            />
-          </div>
+          <AvatarProfile
+            src={lastMessage.author.avatar}
+            name={lastMessage.author.name}
+            className={classes.profile}
+          />
           <Typography className={classes.name}>
             {lastMessage.author.name}
           </Typography>
-          <span>{lastMessage.text}</span>
+          <div style={{ fontWeight: "bold" }}>{lastMessage.text}</div>
         </>
       ) : (
         <ListItemText className={classes.text}>No messages yet...</ListItemText>

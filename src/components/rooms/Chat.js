@@ -1,6 +1,7 @@
 import {
   Backdrop,
   CircularProgress,
+  Container,
   Grid,
   makeStyles,
 } from "@material-ui/core";
@@ -19,14 +20,16 @@ const useStyles = makeStyles((theme) => ({
   },
   messages: {
     width: "100%",
-    height: "100%",
+    marginBottom: "5em",
   },
   bottom: {
-    position: "fixed",
-    display: "inline-block",
-    marginTop: "100%",
+    margin: "1em 5%",
     bottom: 0,
-    width: "100%",
+    left: 0,
+    right: 0,
+    position: "fixed",
+    width: "90%",
+    alignContent: "center",
   },
   notfound: {
     textAlign: "center",
@@ -72,24 +75,18 @@ const Chat = () => {
 
   return (
     <CurrentRoomProvider data={currentRoomData}>
-      <Grid container direction="column">
-        <Grid item xs={12}>
-          <div className={classes.messages}>
-            <Messages />
-          </div>
-        </Grid>
-        <Grid item xs={12}>
-          <div
-            style={{
-              margin: "1em 3em",
-              position: "-webkit-sticky",
-              // position: "sticky",
-            }}
-          >
-            <ChatBottom />
-          </div>
-        </Grid>
-      </Grid>
+      {/* <Grid container direction="column"> */}
+      {/* <Grid item xs={12}> */}
+      <div className={classes.messages}>
+        <Messages />
+      </div>
+      {/* </Grid> */}
+      {/* <Grid item xs={12}> */}
+      <div className={classes.bottom}>
+        <ChatBottom />
+      </div>
+      {/* </Grid> */}
+      {/* </Grid> */}
     </CurrentRoomProvider>
   );
 };
