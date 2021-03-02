@@ -9,9 +9,12 @@ You can visit MyChat project by clicking the URL below.
 
 ## Preview
 
-desktop view
-mobile view
-
+###desktop view
+![mychat_signin](./images/mychat_singin.png)
+![mychat_main](./images/mychat_main.png)
+###mobile view
+![mychat_mobile](./images/mychat_mobile.png)
+![mychat_mobile2](./images/mychat_mobile2.png)
 
 ## Overview
 
