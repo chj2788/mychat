@@ -1,3 +1,4 @@
+
 # Chat app
 
 "MyChat" is a project I started to improve my front-end development knowledge. I practiced responsive web design and react hooks.
@@ -9,12 +10,17 @@ You can visit MyChat project by clicking the URL below.
 
 ## Preview
 
-###desktop view
-![mychat_signin](./images/mychat_singin.png)
-![mychat_main](./images/mychat_main.png)
-###mobile view
-![mychat_mobile](./images/mychat_mobile.png)
-![mychat_mobile2](./images/mychat_mobile2.png)
+#### desktop view
+
+![mychat_signin](https://user-images.githubusercontent.com/62086687/109635186-6e88db00-7b8d-11eb-82b6-47d5247f961f.PNG)
+
+![mychat_main](https://user-images.githubusercontent.com/62086687/109635198-7183cb80-7b8d-11eb-8d6a-5e956c1568f2.PNG)
+
+#### mobile view
+
+![mychat_mobile](https://user-images.githubusercontent.com/62086687/109635042-44cfb400-7b8d-11eb-9cf0-2fb4948a5791.PNG)
+![mychat_mobile2](https://user-images.githubusercontent.com/62086687/109635113-59ac4780-7b8d-11eb-91b5-e32780a16fc0.PNG)
+
 
 ## Overview
 
