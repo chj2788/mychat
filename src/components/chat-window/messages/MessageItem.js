@@ -22,14 +22,14 @@ const useStyles = makeStyles((theme) => ({
   },
   msg: {
     margin: "2em 1em",
-    maxWidth: "40em",
-    wordWrap: "break-word",
   },
   msgbox: {
     background: theme.palette.primary.light,
     width: "fit-content",
     borderRadius: "1em",
     padding: "0.2em 1em",
+    maxWidth: "40em",
+    wordWrap: "break-word",
   },
 }));
 
@@ -95,7 +95,6 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
           icon={<ClearIcon />}
         />
       )}
-
       <div style={{ marginLeft: "3em" }}>
         <Typography className={classes.msgbox}>{text}</Typography>
       </div>

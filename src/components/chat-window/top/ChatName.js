@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   notfound: {
     textAlign: "center",
+    fontSize: "1em",
   },
 }));
 

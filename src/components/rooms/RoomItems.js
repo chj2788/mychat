@@ -1,19 +1,9 @@
-import {
-  ListItem,
-  ListItemText,
-  makeStyles,
-  MenuItem,
-  Typography,
-} from "@material-ui/core";
-import React, { useState } from "react";
+import { makeStyles, Typography } from "@material-ui/core";
+import React from "react";
 import TimeAgo from "timeago-react";
 import AvatarProfile from "../AvatarProfile";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    // flexGrow: 1,
-    // padding: theme.spacing(3),
-  },
   content: {
     display: "flex",
     alignItems: "center",
@@ -34,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     fontSize: "1em",
+    fontWeight: "bold",
   },
   name: {
     fontStyle: "italic",
@@ -45,10 +36,6 @@ const RoomItems = ({ room }) => {
   const classes = useStyles();
 
   const { createdAt, name, lastMessage } = room;
-  const trimmedLastMessage =
-    lastMessage.text.length > 50
-      ? lastMessage.text.substring(0, 50) + "..."
-      : lastMessage.text;
 
   return (
     <div>
@@ -71,10 +58,14 @@ const RoomItems = ({ room }) => {
           <Typography className={classes.name}>
             {lastMessage.author.name}
           </Typography>
-          <div style={{ fontWeight: "bold" }}>{trimmedLastMessage}</div>
+          <div style={{ fontWeight: "bold" }}>
+            {lastMessage.text.length > 50
+              ? lastMessage.text.substring(0, 50) + "..."
+              : lastMessage.text}
+          </div>
         </>
       ) : (
-        <ListItemText className={classes.text}>No messages yet...</ListItemText>
+        <span className={classes.text}>No messages yet...</span>
       )}
     </div>
   );

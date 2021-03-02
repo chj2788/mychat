@@ -5,7 +5,6 @@ import firebase from "firebase/app";
 import { useProfile } from "../../../context/profile.context";
 import { useParams } from "react-router";
 import { database } from "../../../misc/firebase";
-import AttachmentBtnModal from "./AttachmentBtnModal";
 
 function assenbleMessage(profile, chatId) {
   return {
@@ -83,11 +82,6 @@ const Bottom = () => {
             </IconButton>
           </InputAdornment>
         }
-        // startAdornment={
-        //   <InputAdornment position="start">
-        //     <AttachmentBtnModal />
-        //   </InputAdornment>
-        // }
       />
     </>
   );

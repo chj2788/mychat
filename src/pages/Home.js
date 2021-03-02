@@ -2,8 +2,7 @@ import React from "react";
 import { Grid, makeStyles } from "@material-ui/core";
 import ResponsiveDrawer from "../components/ResponsiveDrawer";
 import { RoomsProvider } from "../context/rooms.context";
-import Chat from "../components/rooms/Chat";
-import { Switch, Route, useRouteMatch } from "react-router";
+import { Switch, Route } from "react-router";
 
 const useStyles = makeStyles({
   root: {

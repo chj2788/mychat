@@ -1,10 +1,4 @@
-import {
-  Backdrop,
-  CircularProgress,
-  Container,
-  Grid,
-  makeStyles,
-} from "@material-ui/core";
+import { Backdrop, CircularProgress, makeStyles } from "@material-ui/core";
 import React from "react";
 import Messages from "../chat-window/messages";
 import ChatBottom from "../chat-window/bottom";
@@ -24,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "5em",
   },
   bottom: {
-    margin: "1em 5%",
+    margin: "2em 5%",
     bottom: 0,
     left: 0,
     right: 0,
@@ -39,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
   notfound: {
     textAlign: "center",
+    fontSize: "2em",
   },
 }));
 

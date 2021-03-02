@@ -1,14 +1,7 @@
 import { Button, Grid, makeStyles, Container } from "@material-ui/core";
 import firebase from "firebase/app";
 import { auth, database } from "../misc/firebase";
-import FacebookIcon from "@material-ui/icons/Facebook";
-import GTranslateIcon from "@material-ui/icons/GTranslate";
-import {
-  faFacebook,
-  faFacebookF,
-  faGoogle,
-} from "@fortawesome/free-brands-svg-icons";
-// import { Alert } from "@material-ui/lab";
+import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const useStyles = makeStyles({
@@ -48,14 +41,6 @@ const useStyles = makeStyles({
 const SignInButtons = () => {
   const classes = useStyles();
 
-  // function logInAlert(message) {
-  //   return (
-  //     <div>
-  //       <Alert severity="success">{message}</Alert>
-  //     </div>
-  //   );
-  // }
-
   const signInWithProvider = async (provider) => {
     try {
       const { additionalUserInfo, user } = await auth.signInWithPopup(provider);
@@ -67,13 +52,7 @@ const SignInButtons = () => {
         });
       }
       alert("Signed In!");
-      // logInAlert("signed in!");
-      // alert("success!");
     } catch (err) {
-      // <Alert severity="error">{err.message}</Alert>;
-      // <Alert variant="filled" severity="error">
-      //   This is an error alert — check it out!
-      // </Alert>;
       alert(err.message);
     }
   };

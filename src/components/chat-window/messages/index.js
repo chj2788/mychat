@@ -151,7 +151,11 @@ const Messages = () => {
         padding: 0,
       }}
     >
-      {isChatEmpty && <li>No messages yet</li>}
+      {isChatEmpty && (
+        <li style={{ fontSize: "2em", textAlign: "center" }}>
+          No messages yet...
+        </li>
+      )}
       {canShowMessages && renderMessages()}
     </ul>
   );

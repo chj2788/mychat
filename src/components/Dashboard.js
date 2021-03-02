@@ -1,4 +1,4 @@
-import { Badge, Button, Divider, makeStyles } from "@material-ui/core";
+import { Button, Divider, makeStyles } from "@material-ui/core";
 import React from "react";
 import { useProfile } from "../context/profile.context";
 import { database } from "../misc/firebase";

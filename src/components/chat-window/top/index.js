@@ -8,7 +8,6 @@ import {
 } from "@material-ui/core";
 import { useCurrentRoom } from "../../../context/current-room.context";
 import EditRoomModal from "./EditRoomModal";
-import RoomInfoBtnModal from "./RoomInfoBtnModal";
 import { useModalState } from "../../../misc/custom-hooks";
 
 const useStyles = makeStyles((theme) => ({
@@ -42,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
+  name: {
+    color: theme.palette.primary.light,
+  },
 }));
 
 const ChatTop = () => {
@@ -54,22 +56,18 @@ const ChatTop = () => {
 
   return (
     <div className={classes.root}>
-      <Tooltip arrow title={"Click to see room info"} placement="top-start">
+      <Tooltip arrow title={"Click to see room info"} placement="bottom">
         <Typography variant="h6" className={classes.chatName} onClick={open}>
           {name}
         </Typography>
       </Tooltip>
-      {/* <Button className={classes.button} onClick={open}>
-        Room Info
-      </Button> */}
       <Modal open={isOpen} onClose={close} className={classes.modal}>
         <div className={classes.paper}>
-          <h5>About "{name}"</h5>
+          <h5 className={classes.name}>{name}</h5>
           <h6>Description: {description}</h6>
           <Button onClick={close}>close</Button>
         </div>
       </Modal>
-      {/* <RoomInfoBtnModal /> */}
       <div>{isAdmin && <EditRoomModal />}</div>
     </div>
   );

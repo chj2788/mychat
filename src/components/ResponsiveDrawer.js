@@ -238,9 +238,7 @@ function ResponsiveDrawer() {
         style={{ minHeight: "100vh", height: "100%" }}
       >
         <div className={classes.drawerHeader} />
-        {/* <Grid item xs={12}> */}
         <Chat opening={opening} />
-        {/* </Grid> */}
       </main>
     </div>
   );

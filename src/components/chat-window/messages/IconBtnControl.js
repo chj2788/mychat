@@ -1,7 +1,5 @@
 import React from "react";
 import { Badge, IconButton, makeStyles, Tooltip } from "@material-ui/core";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import { Fragment } from "react";
 
 const useStyles = makeStyles((theme) => ({
   time: {
@@ -50,10 +48,6 @@ const IconBtnControl = ({
           }}
         >
           <IconButton className={classes.iconbtn} onClick={onClick}>
-            {/* <FavoriteIcon
-              // className={classes.heart}
-              style={{ color: { isLiked } ? "red" : "white" }}
-            /> */}
             {icon}
           </IconButton>
         </Badge>
