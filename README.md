@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Chat app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+"MyChat" is a project I started to improve my front-end development knowledge. I practiced responsive web design and react hooks.
 
-## Available Scripts
+You can visit MyChat project by clicking the URL below.
 
-In the project directory, you can run:
+[https://chat-web-app-49b27.web.app/](https://chat-web-app-49b27.web.app/)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Preview
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+###desktop view
+![mychat_signin](./images/mychat_singin.png)
+![mychat_main](./images/mychat_main.png)
+###mobile view
+![mychat_mobile](./images/mychat_mobile.png)
+![mychat_mobile2](./images/mychat_mobile2.png)
 
-### `npm test`
+## Overview
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Real-time chat with rooms, message likes, social media auth, role-based permissions.
 
-### `npm run build`
+Stack:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React
+- Firebase (real-time database)
+- Styles with Material UI (Responsive Design)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Features
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Messaging
+    - Send and Receive messages.
+    - Like messages(show number of likes as well).
+    - Delete messages(only author can delete his/her own message).
+    - Like and delete button only appears when hovered.
+- Profile
+    - Update your Avatar picture with the AvatarEditor component.
+    - Show if user is online or offline.
+    - View other users profile, and the date they joined the chat app.
+    - Can link multiple provider to one account.
+- Chat room
+    - Create chat room with valid name and description.
+    - Only author can change the chat room name and description.
+    - Chat room list shows the last message with an associated author and date.
