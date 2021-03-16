@@ -23,14 +23,20 @@ const useStyles = makeStyles((theme) => ({
   },
   msg: {
     margin: "2em 1em 0 1em",
+    padding: "1em",
+    borderRadius: "1em",
   },
   msgbox: {
-    background: theme.palette.primary.light,
+    background: "gray",
     width: "fit-content",
     borderRadius: "1em",
     padding: "0.2em 1em",
     maxWidth: "40em",
     wordWrap: "break-word",
+    fontSize: "1.2em",
+  },
+  mymsgbox: {
+    background: theme.palette.success.dark,
   },
   hovered: {
     backgroundColor: "rgba(192,192,192,0.2)",
@@ -89,29 +95,15 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
             datetime={createdAt}
           />
         )}
-        {isAuthor && (
-          <ProfileInfoBtnModal profile={author}>
-            {canGrantAdmin && (
-              <Button
-                style={{
-                  backgroundColor: "blue",
-                }}
-                onClick={() => handleAdmin(author.uid)}
-              >
-                {isMsgAuthorAdmin
-                  ? "Remove admin permission"
-                  : "Give admin permission"}
-              </Button>
-            )}
-          </ProfileInfoBtnModal>
+        {!isAuthor && (
+          <PresenceDot uid={author.uid}>
+            <AvatarProfile
+              className={classes.avatar}
+              src={author.avatar}
+              name={author.name}
+            />
+          </PresenceDot>
         )}
-        <PresenceDot uid={author.uid}>
-          <AvatarProfile
-            className={classes.avatar}
-            src={author.avatar}
-            name={author.name}
-          />
-        </PresenceDot>
         {!isAuthor && (
           <ProfileInfoBtnModal profile={author}>
             {canGrantAdmin && (
@@ -142,18 +134,21 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
             }
           />
         )}
-      </li>
-      <li
-        style={
-          isAuthor
-            ? {
-                marginRight: "4em",
-                float: "right",
-              }
-            : { marginLeft: "4em" }
-        }
-      >
-        <Box className={classes.msgbox}>{text}</Box>
+        <Box
+          className={clsx(classes.msgbox, {
+            [classes.mymsgbox]: isAuthor,
+          })}
+          style={
+            isAuthor
+              ? {
+                  margin: "0 1em",
+                  float: "right",
+                }
+              : { marginLeft: "2.5em" }
+          }
+        >
+          {text}
+        </Box>
       </li>
     </>
   );
