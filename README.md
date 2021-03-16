@@ -14,7 +14,8 @@ You can visit MyChat project by clicking the URL below.
 
 ![mychat_signin](https://user-images.githubusercontent.com/62086687/109635186-6e88db00-7b8d-11eb-82b6-47d5247f961f.PNG)
 
-![mychat_main](https://user-images.githubusercontent.com/62086687/109635198-7183cb80-7b8d-11eb-8d6a-5e956c1568f2.PNG)
+![updated_chat](https://user-images.githubusercontent.com/62086687/111297992-9e59d780-8691-11eb-9b41-f99e2127c8ee.PNG)
+
 
 #### mobile view
 
