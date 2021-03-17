@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     cursor: "help",
     flexGrow: 1,
+    marginLeft: "-2em",
   },
   modal: {
     display: "flex",

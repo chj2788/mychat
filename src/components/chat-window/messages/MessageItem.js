@@ -1,4 +1,4 @@
-import { Box, Button, makeStyles, Typography } from "@material-ui/core";
+import { Box, Button, makeStyles } from "@material-ui/core";
 import React, { memo } from "react";
 import TimeAgo from "timeago-react";
 import { useCurrentRoom } from "../../../context/current-room.context";
@@ -141,7 +141,7 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
           style={
             isAuthor
               ? {
-                  margin: "0 1em",
+                  margin: "-0.2em 1em 0 1em",
                   float: "right",
                 }
               : { marginLeft: "2.5em" }
