@@ -27,11 +27,16 @@ You can visit MyChat project by clicking the URL below.
 
 Real-time chat with rooms, message likes, social media auth, role-based permissions.
 
-Stack:
 
-- React
-- Firebase (real-time database)
-- Styles with Material UI (Responsive Design)
+- Stack
+    - React
+    - Firebase (real-time database)
+    - Material UI Framework
+
+- Facebook and Google authentication to secure the app from anonymous users while connecting Firebase for real-time subscription.
+- Used React and Material UI framework, which best works for both mobile and desktop platform, to create a modern responsive SPA.
+- Role-based Access with security rules; Only admin can change the room info and promote a member to admin.
+- Global profile state management with context API and Denormalized chat messages data for better performance.
 
 
 ## Features
