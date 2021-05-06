@@ -9,6 +9,11 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 const theme = createMuiTheme({
   palette: {
     type: "dark",
+    // primary: {
+    //   main: "#4fc2f7",
+    //   light: "#8bf5ff",
+    //   dark: "#0092c4",
+    // },
   },
   typography: {
     // Use the system font instead of the default Roboto font.

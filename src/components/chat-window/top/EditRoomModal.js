@@ -1,5 +1,5 @@
 import { Button, makeStyles, Modal } from "@material-ui/core";
-import React, { memo } from "react";
+import React, { memo, useCallback } from "react";
 import { useParams } from "react-router";
 import { useCurrentRoom } from "../../../context/current-room.context";
 import { useModalState } from "../../../misc/custom-hooks";
@@ -40,6 +40,22 @@ const EditRoomModal = () => {
   const name = useCurrentRoom((v) => v.name);
 
   const description = useCurrentRoom((v) => v.description);
+  const handleDelete = useCallback(async (chatId) => {
+    console.log(chatId.chatId);
+    // eslint-disable-next-line no-alert
+    if (!window.confirm("Delete this room?")) {
+      return;
+    }
+    const updates = {};
+    updates[`rooms/${chatId.chatId}`] = null;
+
+    try {
+      await database.ref().update(updates);
+      alert("Chat room has been deleted");
+    } catch (err) {
+      return alert(err.message);
+    }
+  }, []);
 
   const updateData = (key, value) => {
     database
@@ -86,6 +102,15 @@ const EditRoomModal = () => {
             label="Description"
             labelwidth={88}
           />
+          <div>
+            <Button
+              // tooltip="Delete this message"
+              onClick={() => handleDelete({ chatId })}
+              style={{ backgroundColor: "red" }}
+            >
+              Delete chat room
+            </Button>
+          </div>
           <Button onClick={close}>close</Button>
         </div>
       </Modal>

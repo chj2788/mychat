@@ -5,6 +5,8 @@ import firebase from "firebase/app";
 import { auth } from "../misc/firebase";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import GTranslateIcon from "@material-ui/icons/GTranslate";
+import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ProviderBlock = () => {
   const [isConnected, setIsConnected] = useState({
@@ -80,7 +82,9 @@ const ProviderBlock = () => {
         <Chip
           color="secondary"
           label="Connected"
-          icon={<GTranslateIcon />}
+          icon={
+            <FontAwesomeIcon icon={faGoogle} style={{ margin: "auto 1em" }} />
+          }
           onDelete={unlinkGoogle}
         />
       )}
@@ -93,7 +97,8 @@ const ProviderBlock = () => {
           )}
           {!isConnected["google.com"] && (
             <Button color="secondary" onClick={linkGoogle}>
-              <GTranslateIcon /> Link to Google
+              <FontAwesomeIcon icon={faGoogle} style={{ margin: "auto 1em" }} />{" "}
+              Link to Google
             </Button>
           )}
         </Grid>

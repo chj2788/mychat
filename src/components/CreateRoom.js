@@ -91,7 +91,7 @@ const CreateRoom = () => {
             <TextField
               name="name"
               label="Name"
-              placeholder="Enter chat room name..."
+              placeholder="Enter your chat room name..."
               variant="outlined"
               fullWidth
               required
@@ -106,7 +106,7 @@ const CreateRoom = () => {
               name="description"
               label="Description"
               rows={5}
-              placeholder="Enter room description..."
+              placeholder="Enter yout room description..."
               variant="outlined"
               multiline
               fullWidth
